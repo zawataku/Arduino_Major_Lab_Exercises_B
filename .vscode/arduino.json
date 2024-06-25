@@ -1,7 +1,0 @@
-{
-    "board": "arduino:avr:uno",
-    "port": "/dev/tty.usbmodem1201",
-    "programmer": "arduinoisp",
-    "sketch": "idol/idol.ino",
-    "output": "../ArduinoOutput"
-}
