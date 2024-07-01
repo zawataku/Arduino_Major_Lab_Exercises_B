@@ -2,54 +2,10 @@ const int Button = 2;
 const int Pin = 13;
 
 // 速度定義
-int BPM = 139;
+int BPM = 132;
 int quater = 60000 / BPM;
 int eighth = quater / 2;
 int sixteenth = eighth / 2;
-
-// 音のプロトタイプ関数定義
-// void c_low(int duration);
-// void d_low(int duration);
-// void e_low(int duration);
-// void f_low(int duration);
-// void g_low(int duration);
-// void a_low(int duration);
-// void b_low(int duration);
-
-// void c_high(int duration);
-// void d_high(int duration);
-// void e_high(int duration);
-// void f_high(int duration);
-// void g_high(int duration);
-// void a_high(int duration);
-// void b_high(int duration);
-
-// void c_low_sharp(int duration);
-// void d_low_sharp(int duration);
-// void f_low_sharp(int duration);
-// void g_low_sharp(int duration);
-// void a_low_sharp(int duration);
-
-// void c_high_sharp(int duration);
-// void d_high_sharp(int duration);
-// void f_high_sharp(int duration);
-// void g_high_sharp(int duration);
-// void a_high_sharp(int duration);
-
-// セットアップ関数
-void setup()
-{
-    pinMode(Button, INPUT_PULLUP);
-}
-
-// ループ関数
-void loop()
-{
-    if (digitalRead(Button) == LOW)
-    {
-        luna_say_maybe();
-    }
-}
 
 // 音の定義
 void c_low_4()
@@ -424,32 +380,30 @@ void a_high_sharp_16()
     delay(sixteenth);
 }
 
-void luna_say_maybe()
+// セットアップ関数
+void setup()
 {
-    f_low_8();
-    g_low_8();
-    a_low_sharp_4();
-    f_low_8();
-    g_low_8();
-    a_low_sharp_8();
-    f_low_4();
-    g_low_8();
-    a_low_sharp_8();
-    f_low_4();
-    g_low_8();
-    a_low_sharp_8();
-    g_low_8();
-    f_low_8();
-    g_low_8();
-    a_low_sharp_4();
-    f_low_8();
-    g_low_8();
-    a_low_sharp_8();
-    f_low_4();
-    g_low_8();
-    a_low_sharp_8();
-    f_low_4();
-    g_low_8();
+    pinMode(Button, INPUT_PULLUP);
+}
+
+// ループ関数
+void loop()
+{
+    if (digitalRead(Button) == LOW)
+    {
+        fighting_my_way();
+    }
+}
+
+void fighting_my_way()
+{
     c_high_8();
     a_low_sharp_8();
+    g_low_sharp_8();
+    d_low_sharp_8();
+
+    tone(Pin, 698, eighth + sixteenth);
+    delay(eighth + sixteenth);
+
+    c_high_sharp_4();
 }

@@ -14,9 +14,10 @@ void setup()
 void loop()
 {
     if (digitalRead(buttonPin) == LOW)
+    {
         smoothColorTransition();
     }
-    else
+    else if (digitalRead(buttonPin) == HIGH)
     {
         analogWrite(redPin, 0);
         analogWrite(greenPin, 0);
@@ -28,6 +29,10 @@ void smoothColorTransition()
 {
     for (int i = 0; i < 256; i++)
     {
+        if (digitalRead(buttonPin) == HIGH)
+        {
+            break;
+        }
         analogWrite(redPin, i);
         analogWrite(greenPin, 255 - i);
         analogWrite(bluePin, (i < 128) ? 2 * i : 2 * (255 - i));
@@ -35,6 +40,10 @@ void smoothColorTransition()
     }
     for (int i = 255; i >= 0; i--)
     {
+        if (digitalRead(buttonPin) == HIGH)
+        {
+            break;
+        }
         analogWrite(redPin, i);
         analogWrite(greenPin, 255 - i);
         analogWrite(bluePin, (i < 128) ? 2 * i : 2 * (255 - i));
